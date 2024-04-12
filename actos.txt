@@ -1,0 +1,9 @@
+##JSoLang act3
+
+main = x:allRules* { return "##Punctual\n" + x.join("") }
+allRules =   r1 / r2 / anyCharacter
+anyCharacter = .
+
+r1= "act3"i { return "a << fit (3/2) $  img \"https://afrancob.github.io/la-fabrica-colapsada-visuales/act3-1.png\"; c << fit (5/4) $  img \"https://afrancob.github.io/la-fabrica-colapsada-visuales/act3-2.tif\"; b << fit (3/2) $  img \"https://afrancob.github.io/la-fabrica-colapsada-visuales/act3-3.jpg\"; d << fit (3/2) $  img \"https://afrancob.github.io/la-fabrica-colapsada-visuales/act3-4.jpg\"; x << hline (spin frt $ (saw fxy)) ((fract (etime*0.05*fr))*0.1+0.1); z << spin (fx *smoothstep [150,190] etime) d; ina << smoothstepp [0,15] etime; outa << smoothstepp [55,35] etime; inb << smoothstepp [40,55] etime; outb << smoothstepp [80,65] etime; inc << smoothstepp [65,90] etime; outc << smoothstepp [120,100] etime; ind << smoothstepp [110,150] etime; outd << smoothstepp [190,160] etime; a*ina*outa*x >> video; (zoom (1 + (inc*4)) $ spin (fr * (fract (etime*0.01))) $ b)*inb*outb >> video; (zoom (1+(fract (etime*ft))*outb) $ spin (fr * (fract (etime*0.02))) $ c) *inc*outc >> video; d*ind*outd*z >> video; zoom 3 $ (zoom (osc fr) $ b) *((outd*(-1))+1) >> video;" }
+
+r2= "epilogue"i { return "a << img \"https://afrancob.github.io/la-fabrica-colapsada-visuales/act3-5.jpg\"; fit (3/2) $ spin (osc 0.01 *  frt) $ a *(etime*0.001) *(-6)db >> video; zoom (etime*0.0075 + 1.2) $ fit (3/2) $ spin (fr * (etime*0.007)) $ move [((-0.0195)~~(-0.025) $ osc (0.1/(etime))), ((-0.05)~~(-0.0512) $  osc (0.1/etime))] $ fit (3/2) $ a * (prox 0 ** (3+(etime*0.006)))  >> video;" }
